@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>chess-retro: find the chess weaknesses you keep repeating</title>
+<meta name="description" content="chess-retro analyses hundreds of your chess.com games with Stockfish and ranks your recurring weaknesses: missed tactics, bad phases, time pressure, costly openings. Free, open source, runs locally.">
+<meta name="google-site-verification" content="G3uUnDQmRGqtmmWgRcIrNT_tnv9UxS55N-kFNvPgwd8" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W26DXJ5Z9Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-W26DXJ5Z9Z');
+</script>
+<link rel="canonical" href="https://wesnam.github.io/chess-retro/">
+<meta name="author" content="Wes Nam">
+<meta property="og:type" content="website">
+<meta property="og:title" content="chess-retro: find the chess weaknesses you keep repeating">
+<meta property="og:description" content="Stockfish analysis across your whole chess.com history, ranked into your top recurring weaknesses, with puzzles to fix them.">
+<meta property="og:url" content="https://wesnam.github.io/chess-retro/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♞</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "chess-retro",
+  "description": "Find the weaknesses you keep repeating across hundreds of chess.com games.",
+  "codeRepository": "https://github.com/wesnam/chess-retro",
+  "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+  "programmingLanguage": "TypeScript",
+  "author": { "@type": "Person", "name": "Wes Nam", "url": "https://github.com/wesnam" }
+}
+</script>
+<style>
+:root{--bg:#161512;--fg:#e8e6e1;--muted:#9c9890;--card:#211f1c;--line:#34312c;--accent:#81b64c;--accent-fg:#10140b}
+@media (prefers-color-scheme:light){:root{--bg:#f7f5f0;--fg:#1f1d1a;--muted:#625e56;--card:#fff;--line:#e0dcd2;--accent:#3d7a1d;--accent-fg:#fff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header{padding:72px 0 48px;text-align:center;
+ background:conic-gradient(var(--line) 25%,transparent 0 50%,var(--line) 0 75%,transparent 0) 0 0/48px 48px;
+ background-blend-mode:normal}
+header .wrap{background:var(--bg);padding:32px 20px;border-radius:12px;max-width:640px}
+h1{font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.1;margin:0 0 12px;letter-spacing:-.02em}
+h1 span{color:var(--accent)}
+.lead{font-size:1.2rem;color:var(--muted);margin:0 0 28px}
+.btn{display:inline-block;padding:12px 22px;border-radius:8px;font-weight:600;text-decoration:none;margin:4px}
+.btn.primary{background:var(--accent);color:var(--accent-fg)}
+.btn.ghost{border:1px solid var(--line);color:var(--fg)}
+section{padding:40px 0}
+h2{font-size:1.6rem;margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px}
+.card h3{margin:0 0 6px;font-size:1.05rem}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+ol li{margin-bottom:10px}
+pre{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;overflow-x:auto;font-size:.9rem}
+.note{border-left:3px solid var(--accent);padding:4px 16px;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);font-size:.9rem;text-align:center}
+</style>
+</head>
+<body>
+<nav class="wrap" style="padding-top:16px"><a href="/">← wesnam.github.io</a></nav>
+<header>
+  <div class="wrap">
+    <h1>chess<span>-retro</span></h1>
+    <p class="lead">Find the weaknesses you keep repeating, across hundreds of chess.com games, not just the last one.</p>
+    <a class="btn primary" href="https://github.com/wesnam/chess-retro">View on GitHub</a>
+    <a class="btn ghost" href="https://github.com/wesnam/chess-retro#getting-started">Get started</a>
+  </div>
+</header>
+
+<main class="wrap">
+<section>
+  <h2>Why</h2>
+  <p>Chess.com Game Review and lichess analysis tell you what went wrong in <strong>one game</strong>. chess-retro downloads your games, analyses every one with Stockfish, and aggregates across your whole history to rank your <strong>recurring weaknesses</strong>. Then it prescribes puzzles aimed at exactly those gaps.</p>
+  <p>It opens on "your top 3 weaknesses in blitz", not on a list of games.</p>
+</section>
+
+<section>
+  <h2>What it does</h2>
+  <div class="grid">
+    <div class="card"><h3>Ranks recurring weaknesses</h3><p>Missed tactics, game phase, time pressure, costly openings, and your worst piece, all competing in one ranking per time control.</p></div>
+    <div class="card"><h3>Explains in plain English</h3><p>Each weakness comes with the statistic behind it and links to the positions in your own games.</p></div>
+    <div class="card"><h3>Prescribes puzzles</h3><p>Targeted practice for the tactics you actually miss, from the Lichess puzzle database.</p></div>
+    <div class="card"><h3>Analyses your full history</h3><p>Stockfish on every game, resumable. Pause, close the laptop, pick it up later.</p></div>
+    <div class="card"><h3>Interactive game review</h3><p>Explore variations on a board with live engine analysis.</p></div>
+    <div class="card"><h3>Cheap to keep current</h3><p>Re-sync fetches and analyses only your new games.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Private by design</h2>
+  <p>Everything runs on your machine: your games, your database. Only your public chess.com username is needed, with no password and no account. An Anthropic API key is optional and adds written coaching.</p>
+</section>
+
+<section>
+  <h2>Quick start</h2>
+  <pre><code>brew install stockfish        # Node.js 22+ also required
+git clone https://github.com/wesnam/chess-retro
+cd chess-retro
+npm install
+npm run dev</code></pre>
+  <p>Budget about an hour to your first dashboard, mostly unattended analysis. Full steps are in the <a href="https://github.com/wesnam/chess-retro#getting-started">README</a>.</p>
+  <p class="note">Early development. The bundled peer cohort is rated about 600 to 680 (rapid), so rankings are most accurate for players in that range.</p>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="https://github.com/wesnam/chess-retro">Source</a> ·
+    <a href="https://github.com/wesnam">@wesnam</a> ·
+    GPL-3.0-or-later
+  </div>
+</footer>
+</body>
+</html>

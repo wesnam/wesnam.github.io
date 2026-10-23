@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>gsd-agent-wiki: a portable knowledge base for coding agents</title>
+<meta name="description" content="gsd-agent-wiki is a personal, git-based knowledge base for coding agents: durable patterns, lessons and decisions in plain Markdown, with reviewed writes and cheap retrieval.">
+<meta name="google-site-verification" content="G3uUnDQmRGqtmmWgRcIrNT_tnv9UxS55N-kFNvPgwd8" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W26DXJ5Z9Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-W26DXJ5Z9Z');
+</script>
+<link rel="canonical" href="https://wesnam.github.io/gsd-agent-wiki/">
+<meta name="author" content="Wes Nam">
+<meta property="og:type" content="website">
+<meta property="og:title" content="gsd-agent-wiki: a portable knowledge base for coding agents">
+<meta property="og:description" content="Durable engineering knowledge for coding agents, as plain Markdown in git, with reviewed writes.">
+<meta property="og:url" content="https://wesnam.github.io/gsd-agent-wiki/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "gsd-agent-wiki",
+  "description": "A portable, git-based knowledge base for coding agents.",
+  "codeRepository": "https://github.com/wesnam/gsd-agent-wiki",
+  "programmingLanguage": "Markdown",
+  "author": { "@type": "Person", "name": "Wes Nam", "url": "https://github.com/wesnam" }
+}
+</script>
+<style>
+:root{--bg:#161512;--fg:#e8e6e1;--muted:#9c9890;--card:#211f1c;--line:#34312c;--accent:#81b64c;--accent-fg:#10140b}
+@media (prefers-color-scheme:light){:root{--bg:#f7f5f0;--fg:#1f1d1a;--muted:#625e56;--card:#fff;--line:#e0dcd2;--accent:#3d7a1d;--accent-fg:#fff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header{padding:72px 0 48px;text-align:center;
+ background:conic-gradient(var(--line) 25%,transparent 0 50%,var(--line) 0 75%,transparent 0) 0 0/48px 48px;
+ background-blend-mode:normal}
+header .wrap{background:var(--bg);padding:32px 20px;border-radius:12px;max-width:640px}
+h1{font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.1;margin:0 0 12px;letter-spacing:-.02em}
+h1 span{color:var(--accent)}
+.lead{font-size:1.2rem;color:var(--muted);margin:0 0 28px}
+.btn{display:inline-block;padding:12px 22px;border-radius:8px;font-weight:600;text-decoration:none;margin:4px}
+.btn.primary{background:var(--accent);color:var(--accent-fg)}
+.btn.ghost{border:1px solid var(--line);color:var(--fg)}
+section{padding:40px 0}
+h2{font-size:1.6rem;margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px}
+.card h3{margin:0 0 6px;font-size:1.05rem}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+ol li{margin-bottom:10px}
+pre{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;overflow-x:auto;font-size:.9rem}
+.note{border-left:3px solid var(--accent);padding:4px 16px;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);font-size:.9rem;text-align:center}
+</style>
+</head>
+<body>
+<nav class="wrap" style="padding-top:16px"><a href="/">← wesnam.github.io</a></nav>
+<header>
+  <div class="wrap">
+    <h1>gsd-agent<span>-wiki</span></h1>
+    <p class="lead">A portable, git-based knowledge base for coding agents. It remembers what you have learned across projects.</p>
+    <a class="btn primary" href="https://github.com/wesnam/gsd-agent-wiki">View on GitHub</a>
+    <a class="btn ghost" href="https://github.com/wesnam/gsd-agent-wiki#quick-start">Quick start</a>
+  </div>
+</header>
+
+<main class="wrap">
+<section>
+  <h2>Why</h2>
+  <p>GSD (Get Shit Done) runs the work and tracks per-project state. gsd-agent-wiki is the long-term memory layer: durable concepts, patterns, lessons, preferences, and decisions, stored as plain Markdown. Agents consult it before big decisions.</p>
+  <p class="note">GSD remembers where the work is. gsd-agent-wiki remembers what you have learned.</p>
+</section>
+
+<section>
+  <h2>How it works</h2>
+  <div class="grid">
+    <div class="card"><h3>No server, no SDK</h3><p>Markdown with YAML frontmatter, following Open Knowledge Format (OKF) v0.2. Read it with any editor or agent.</p></div>
+    <div class="card"><h3>Reviewed writes only</h3><p>Candidates are staged in an inbox, then promoted to the wiki on a branch after you approve the diff.</p></div>
+    <div class="card"><h3>Works without GSD</h3><p>GSD is a convenient source of input, never a dependency.</p></div>
+    <div class="card"><h3>Cheap retrieval</h3><p>Agents read the index, then page descriptions, then search, and open full pages last.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Quick start</h2>
+  <pre><code>git clone https://github.com/wesnam/gsd-agent-wiki
+cd gsd-agent-wiki
+claude --add-dir /path/to/gsd-agent-wiki</code></pre>
+  <p>Capture with <code>/kb-capture</code>, review with <code>/kb-curate</code>, check health with <code>/kb-lint</code>. Details in the <a href="https://github.com/wesnam/gsd-agent-wiki#readme">README</a>.</p>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="https://github.com/wesnam/gsd-agent-wiki">Source</a> ·
+    <a href="https://github.com/wesnam">@wesnam</a>
+  </div>
+</footer>
+</body>
+</html>
